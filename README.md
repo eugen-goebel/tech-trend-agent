@@ -1,6 +1,6 @@
 # Tech Trend Report Agent
 
-An AI-powered multi-agent system that generates comprehensive technology trend reports. Enter any technology — Artificial Intelligence, Blockchain, Quantum Computing — and get a professional Word document with market analysis, key players, use cases, and strategic outlook.
+An AI-powered multi-agent system that generates technology trend reports. Enter any technology — Artificial Intelligence, Blockchain, Quantum Computing — and get a professional Word document with market analysis, key players, use cases, and strategic outlook.
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
 ![Tests](https://img.shields.io/badge/Tests-52_passed-brightgreen)
@@ -44,7 +44,7 @@ CLI Input ("Quantum Computing")
 
 ```bash
 # 1. Clone the repo
-git clone https://github.com/eugengoebel/tech-trend-agent.git
+git clone https://github.com/eugen-goebel/tech-trend-agent.git
 cd tech-trend-agent
 
 # 2. Install dependencies
