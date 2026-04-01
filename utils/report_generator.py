@@ -14,6 +14,7 @@ from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
 
 from agents.analyst import TechAnalysisResult
+from utils.chart_generator import create_key_players_chart, create_use_case_impact_chart
 
 
 # ---------------------------------------------------------------------------
@@ -321,12 +322,20 @@ def generate_docx_report(
     _add_heading(doc, "Key Players")
     _add_horizontal_rule(doc)
     _build_key_player_table(doc, analysis.key_players)
+    if analysis.key_players:
+        doc.add_paragraph()
+        chart_buf = create_key_players_chart(analysis)
+        doc.add_picture(chart_buf, width=Inches(5.2))
     doc.add_paragraph()
 
     # 7. Use Cases
     _add_heading(doc, "Use Cases")
     _add_horizontal_rule(doc)
     _build_use_case_table(doc, analysis.use_cases)
+    if analysis.use_cases:
+        doc.add_paragraph()
+        chart_buf = create_use_case_impact_chart(analysis)
+        doc.add_picture(chart_buf, width=Inches(3.8))
     doc.add_paragraph()
 
     # 8. Strengths & Limitations
