@@ -99,7 +99,7 @@ def _build_cover(doc: Document, technologies: list[str]):
     doc.add_page_break()
 
 
-def _build_comparison_table(doc: Document, label: str, technologies: list[str],
+def _build_comparison_table(doc: Document, technologies: list[str],
                             analyses: list[TechAnalysisResult], field: str):
     """Build a side-by-side comparison table for a text field."""
     cols = len(technologies)
