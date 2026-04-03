@@ -1,9 +1,8 @@
 """
 Mock data for --dry-run mode.
 
-Provides a realistic TechAnalysisResult for Artificial Intelligence so the
-full pipeline (report generation, DOCX output, styling) can be tested
-without an API key.
+Provides realistic TechAnalysisResult instances so the full pipeline
+(report generation, DOCX output, styling) can be tested without an API key.
 """
 
 from .analyst import TechAnalysisResult, KeyPlayer, UseCase
@@ -205,3 +204,182 @@ AI_MOCK = TechAnalysisResult(
         "Supply chain vulnerabilities in AI chip manufacturing (TSMC dependency)",
     ],
 )
+
+
+BLOCKCHAIN_MOCK = TechAnalysisResult(
+    executive_summary=(
+        "Blockchain technology has matured beyond its cryptocurrency origins into a "
+        "foundational infrastructure layer for digital trust and decentralized applications. "
+        "The global blockchain market reached $27 billion in 2025, projected to grow to "
+        "$94 billion by 2030 at a CAGR of 28%. Enterprise adoption is accelerating in "
+        "financial services, supply chain management, and digital identity. Layer-2 scaling "
+        "solutions and cross-chain interoperability protocols have addressed earlier performance "
+        "limitations, enabling throughput of 10,000+ transactions per second. Regulatory clarity "
+        "in the EU (MiCA) and evolving US frameworks are reducing institutional hesitancy."
+    ),
+    technology_overview=(
+        "Blockchain is a distributed ledger technology that maintains an immutable, cryptographically "
+        "secured record of transactions across a network of nodes without a central authority. "
+        "Key architectural variants include public permissionless chains (Ethereum, Solana), "
+        "private permissioned networks (Hyperledger Fabric, R3 Corda), and hybrid approaches. "
+        "Smart contracts enable programmable, self-executing agreements. The technology stack "
+        "encompasses consensus mechanisms (PoS, PoA, BFT variants), Layer-2 solutions (rollups, "
+        "state channels), decentralized storage (IPFS, Arweave), and oracles (Chainlink) that "
+        "bridge on-chain and off-chain data."
+    ),
+    maturity_assessment=(
+        "Blockchain is in the early mainstream adoption phase. Cryptocurrency and DeFi have "
+        "crossed into mainstream awareness, while enterprise blockchain is transitioning from "
+        "pilot programs to production deployments. Tokenization of real-world assets (RWA) is "
+        "in the early growth stage, with major financial institutions launching tokenized bond "
+        "and fund products. Gartner placed blockchain on the 'Slope of Enlightenment' in 2024, "
+        "with enterprise use cases maturing faster than consumer applications. The technology is "
+        "production-ready for asset tokenization, trade finance, and supply chain provenance."
+    ),
+    market_landscape=(
+        "The global blockchain market was valued at $27 billion in 2025, with financial services "
+        "accounting for 38% of spending. North America leads with 35% market share, followed by "
+        "APAC at 32%. The tokenized assets market reached $12 billion in 2025 (excluding stablecoins) "
+        "and is projected to reach $16 trillion by 2030 according to BCG. Enterprise blockchain "
+        "platforms (Hyperledger, Ethereum Enterprise) grew 45% YoY. Stablecoin transaction volume "
+        "exceeded $10 trillion in 2024, surpassing Visa's payment volume."
+    ),
+    key_players=[
+        KeyPlayer(
+            name="Ethereum Foundation",
+            description="Maintains the Ethereum protocol, the dominant smart contract platform "
+                        "with $400B+ in total value locked across DeFi protocols.",
+            focus_area="Smart contracts, DeFi infrastructure, Layer-2 ecosystem",
+            market_position="Dominant platform for decentralized applications with ~60% DeFi market share",
+        ),
+        KeyPlayer(
+            name="Hyperledger (Linux Foundation)",
+            description="Open-source enterprise blockchain framework used by IBM, Walmart, and "
+                        "major supply chain consortia for permissioned networks.",
+            focus_area="Enterprise permissioned blockchains, supply chain, trade finance",
+            market_position="Leading enterprise blockchain framework with 300+ member organizations",
+        ),
+        KeyPlayer(
+            name="Chainlink Labs",
+            description="Provides decentralized oracle networks connecting blockchain smart contracts "
+                        "to real-world data, APIs, and payment systems.",
+            focus_area="Oracle networks, cross-chain interoperability, data feeds",
+            market_position="Dominant oracle provider securing $75B+ in DeFi value",
+        ),
+        KeyPlayer(
+            name="Ripple Labs",
+            description="Operates RippleNet for cross-border payments, partnering with 300+ financial "
+                        "institutions globally for real-time settlement.",
+            focus_area="Cross-border payments, institutional DeFi, CBDC infrastructure",
+            market_position="Leading blockchain payment network with institutional adoption focus",
+        ),
+        KeyPlayer(
+            name="ConsenSys",
+            description="Ethereum ecosystem builder behind MetaMask (30M+ users), Infura infrastructure, "
+                        "and enterprise solutions for major banks and governments.",
+            focus_area="Ethereum infrastructure, wallets, enterprise deployment tools",
+            market_position="Largest Ethereum infrastructure provider with developer ecosystem dominance",
+        ),
+    ],
+    use_cases=[
+        UseCase(
+            title="Tokenized Real-World Assets",
+            description="Converting traditional financial instruments (bonds, real estate, funds) into "
+                        "blockchain tokens for 24/7 trading, fractional ownership, and instant settlement. "
+                        "BlackRock's BUIDL fund reached $500M in tokenized assets within 6 months.",
+            industry="Financial Services",
+            impact_level="High",
+        ),
+        UseCase(
+            title="Supply Chain Provenance",
+            description="End-to-end tracking of goods from manufacturer to consumer using immutable "
+                        "blockchain records. Walmart uses Hyperledger to trace food products from farm "
+                        "to shelf in seconds instead of days.",
+            industry="Retail & Logistics",
+            impact_level="High",
+        ),
+        UseCase(
+            title="Decentralized Identity (DID)",
+            description="Self-sovereign identity systems giving individuals control over their digital "
+                        "credentials without relying on centralized providers. Used for KYC, healthcare "
+                        "records, and academic credentials across 40+ government pilot programs.",
+            industry="Government & Identity",
+            impact_level="Medium",
+        ),
+        UseCase(
+            title="Cross-Border Payments",
+            description="Near-instant international payments at a fraction of traditional correspondent "
+                        "banking costs. Stablecoins and blockchain rails reduce settlement from 3-5 days "
+                        "to under 10 seconds with fees below $0.01.",
+            industry="Banking & Payments",
+            impact_level="High",
+        ),
+        UseCase(
+            title="Carbon Credit Marketplaces",
+            description="Transparent tracking and trading of carbon credits on blockchain to prevent "
+                        "double-counting and fraud. Toucan Protocol has tokenized 20M+ tonnes of CO2 credits.",
+            industry="Energy & Environment",
+            impact_level="Medium",
+        ),
+    ],
+    strengths=[
+        "Immutability and transparency provide tamper-proof audit trails for compliance-heavy industries",
+        "Eliminates intermediaries, reducing transaction costs by 40-80% in cross-border payments",
+        "Smart contracts automate complex multi-party agreements without manual reconciliation",
+        "Cryptographic security with no single point of failure resistant to traditional cyberattacks",
+        "Programmable money and tokenization enable entirely new financial instruments and markets",
+    ],
+    limitations=[
+        "Scalability remains challenging for public chains — base layer throughput lags centralized systems",
+        "Energy consumption concerns persist for proof-of-work chains despite Ethereum's move to PoS",
+        "User experience is complex — private key management and gas fees deter mainstream adoption",
+        "Regulatory uncertainty in key markets (US) creates compliance risk for institutional adopters",
+        "Interoperability between different blockchain networks remains fragmented and technically complex",
+    ],
+    adoption_drivers=[
+        "Regulatory clarity (EU MiCA, Singapore MAS frameworks) reducing institutional compliance risk",
+        "Major financial institutions (BlackRock, JPMorgan, Goldman Sachs) launching tokenization products",
+        "Central Bank Digital Currency (CBDC) development by 130+ countries driving infrastructure investment",
+        "DeFi maturity with institutional-grade protocols offering 3-8% yields on tokenized assets",
+        "Supply chain disruptions post-COVID increasing demand for transparent provenance tracking",
+    ],
+    adoption_barriers=[
+        "Fragmented regulatory landscape across jurisdictions complicating global deployment",
+        "Shortage of blockchain developers — estimated 30,000 globally vs. millions of traditional developers",
+        "Legacy system integration complexity for enterprises with decades of existing IT infrastructure",
+        "Public perception still heavily associated with cryptocurrency speculation and fraud",
+        "Governance challenges in decentralized systems — protocol upgrades require broad consensus",
+    ],
+    future_outlook=(
+        "The next 3-5 years will see blockchain transition from a specialized technology to invisible "
+        "infrastructure underpinning financial markets, supply chains, and digital identity. Tokenization "
+        "of real-world assets is projected to reach $16 trillion by 2030, fundamentally restructuring "
+        "capital markets. CBDCs will launch in 20+ major economies, creating a new monetary layer built "
+        "on distributed ledger technology. Zero-knowledge proof technology will enable privacy-preserving "
+        "transactions at scale, addressing the privacy-transparency tradeoff. Cross-chain bridges and "
+        "universal standards (ERC-3643 for compliant tokens) will consolidate the fragmented ecosystem "
+        "into an interoperable web of value transfer."
+    ),
+    key_trends=[
+        "Real-world asset tokenization becoming the dominant institutional blockchain use case",
+        "Zero-knowledge proofs enabling privacy-preserving compliance and scalable computation",
+        "Central Bank Digital Currencies (CBDCs) driving government blockchain infrastructure investment",
+        "Account abstraction and social recovery improving end-user wallet experience",
+        "Decentralized Physical Infrastructure Networks (DePIN) bridging blockchain and IoT",
+        "Restaking and shared security models optimizing capital efficiency across protocols",
+        "Regulatory convergence with MiCA setting global standards for digital asset governance",
+    ],
+    risk_factors=[
+        "Regulatory crackdowns in major markets (US SEC enforcement) potentially stifling innovation",
+        "Smart contract vulnerabilities and DeFi exploits eroding trust — $1.8B lost in 2024 hacks",
+        "Concentration risk with Ethereum dominant — systemic risk if a critical vulnerability is found",
+        "Quantum computing threat to current cryptographic algorithms within the next 10-15 years",
+        "Geopolitical tensions driving blockchain balkanization and incompatible regional standards",
+    ],
+)
+
+
+COMPARISON_MOCKS = {
+    "Artificial Intelligence": AI_MOCK,
+    "Blockchain": BLOCKCHAIN_MOCK,
+}
