@@ -25,6 +25,12 @@ def main():
         help="Technology to analyze (e.g., 'Quantum Computing', 'Blockchain')",
     )
     parser.add_argument(
+        "--compare",
+        nargs="+",
+        metavar="TECH",
+        help="Compare 2-3 technologies side-by-side (e.g., --compare 'AI' 'Blockchain')",
+    )
+    parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Run with sample data (no API key needed)",
@@ -42,17 +48,33 @@ def main():
 
     args = parser.parse_args()
 
+    if args.compare and len(args.compare) < 2:
+        print("Error: --compare requires at least 2 technologies.")
+        sys.exit(1)
+    if args.compare and len(args.compare) > 3:
+        print("Error: --compare supports at most 3 technologies.")
+        sys.exit(1)
+
     if args.dry_run:
-        from agents.mock_data import AI_MOCK
+        from agents.mock_data import AI_MOCK, COMPARISON_MOCKS
         from agents.orchestrator import TechTrendOrchestrator
 
-        print("=" * 60)
-        print(f"  TECH TREND REPORT — DRY RUN")
-        print(f"  Technology: {args.technology}")
-        print("=" * 60)
-
         orch = TechTrendOrchestrator(output_dir=args.output)
-        report_path = orch.run_with_mock(args.technology, AI_MOCK)
+
+        if args.compare:
+            techs = args.compare
+            analyses = [COMPARISON_MOCKS.get(t, AI_MOCK) for t in techs]
+            print("=" * 60)
+            print(f"  TECH COMPARISON REPORT — DRY RUN")
+            print(f"  Technologies: {', '.join(techs)}")
+            print("=" * 60)
+            report_path = orch.run_comparison_with_mock(techs, analyses)
+        else:
+            print("=" * 60)
+            print(f"  TECH TREND REPORT — DRY RUN")
+            print(f"  Technology: {args.technology}")
+            print("=" * 60)
+            report_path = orch.run_with_mock(args.technology, AI_MOCK)
 
         print("\n" + "=" * 60)
         print(f"  Report ready: {report_path}")
@@ -67,17 +89,25 @@ def main():
 
         from agents.orchestrator import TechTrendOrchestrator
 
-        print("=" * 60)
-        print(f"  TECH TREND REPORT")
-        print(f"  Technology: {args.technology}")
-        print("=" * 60)
-
         orch = TechTrendOrchestrator(
             api_key=api_key,
             model=args.model,
             output_dir=args.output,
         )
-        report_path = orch.run(args.technology)
+
+        if args.compare:
+            techs = args.compare
+            print("=" * 60)
+            print(f"  TECH COMPARISON REPORT")
+            print(f"  Technologies: {', '.join(techs)}")
+            print("=" * 60)
+            report_path = orch.run_comparison(techs)
+        else:
+            print("=" * 60)
+            print(f"  TECH TREND REPORT")
+            print(f"  Technology: {args.technology}")
+            print("=" * 60)
+            report_path = orch.run(args.technology)
 
         print("\n" + "=" * 60)
         print(f"  Report ready: {report_path}")

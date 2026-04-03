@@ -9,6 +9,7 @@ import anthropic
 from agents.researcher import ResearchAgent
 from agents.analyst import AnalysisAgent, TechAnalysisResult
 from utils.report_generator import generate_docx_report
+from utils.comparison_report import generate_comparison_report
 
 
 class TechTrendOrchestrator:
@@ -64,6 +65,54 @@ class TechTrendOrchestrator:
         report_path = generate_docx_report(technology, analysis, self.output_dir)
         print(f"      Report saved: {report_path}")
 
+        return report_path
+
+    def run_comparison(self, technologies: list[str]) -> str:
+        """
+        Run the pipeline for multiple technologies and generate a comparison report.
+
+        Args:
+            technologies: List of 2-3 technology names to compare
+
+        Returns:
+            Absolute path to the generated comparison DOCX report
+        """
+        analyses = []
+        total = len(technologies)
+
+        for idx, tech in enumerate(technologies, 1):
+            print(f"\n{'='*60}")
+            print(f"  Analyzing {idx}/{total}: {tech}")
+            print(f"{'='*60}")
+
+            print(f"\n[1/2] Researching '{tech}' ...")
+            research_brief = self._researcher.research(tech)
+            word_count = len(research_brief.split())
+            print(f"      Research complete: {word_count:,} words collected.")
+
+            print(f"\n[2/2] Analyzing research data ...")
+            analysis = self._analyst.analyze(tech, research_brief)
+            print(f"      Analysis complete: "
+                  f"{len(analysis.key_players)} key players, "
+                  f"{len(analysis.use_cases)} use cases.")
+            analyses.append(analysis)
+
+        print(f"\n{'='*60}")
+        print(f"  Generating comparison report ...")
+        print(f"{'='*60}")
+
+        report_path = generate_comparison_report(technologies, analyses, self.output_dir)
+        print(f"      Report saved: {report_path}")
+
+        return report_path
+
+    def run_comparison_with_mock(
+        self, technologies: list[str], analyses: list[TechAnalysisResult],
+    ) -> str:
+        """Run comparison with pre-built analysis data (for --dry-run)."""
+        print(f"\n[DRY RUN] Generating comparison report for: {', '.join(technologies)}")
+        report_path = generate_comparison_report(technologies, analyses, self.output_dir)
+        print(f"      Report saved: {report_path}")
         return report_path
 
     def run_with_mock(self, technology: str, analysis: TechAnalysisResult) -> str:
