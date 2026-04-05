@@ -10,6 +10,18 @@ An AI-powered multi-agent system that generates technology trend reports. Enter 
 
 ---
 
+## Sample Report Charts
+
+Charts are generated from the analysis output and embedded directly into the DOCX report. Examples from the bundled `Artificial Intelligence` mock data:
+
+**Key Player Market Relevance** — horizontal bar chart ranking leading companies
+![Key Players](docs/screenshots/01-key-players.png)
+
+**Use Cases by Impact Level** — distribution of identified use cases across impact tiers
+![Use Case Impact](docs/screenshots/02-use-case-impact.png)
+
+---
+
 ## Architecture
 
 ```
