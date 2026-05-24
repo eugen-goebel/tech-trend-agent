@@ -109,11 +109,12 @@ class TestOrchestratorComparison:
         from agents.orchestrator import TechTrendOrchestrator
 
         orch = TechTrendOrchestrator(output_dir=str(tmp_path))
-        path = orch.run_comparison_with_mock(
+        paths = orch.run_comparison_with_mock(
             ["AI", "Blockchain"],
             [AI_MOCK, BLOCKCHAIN_MOCK],
         )
-        assert os.path.isfile(path)
+        assert isinstance(paths, list) and len(paths) == 1
+        assert os.path.isfile(paths[0])
 
     @patch("agents.orchestrator.ResearchAgent")
     @patch("agents.orchestrator.AnalysisAgent")
@@ -129,11 +130,12 @@ class TestOrchestratorComparison:
         mock_analyst_cls.return_value = mock_analyst
 
         orch = TechTrendOrchestrator(output_dir=str(tmp_path))
-        path = orch.run_comparison(["Tech A", "Tech B"])
+        paths = orch.run_comparison(["Tech A", "Tech B"])
 
         assert mock_researcher.research.call_count == 2
         assert mock_analyst.analyze.call_count == 2
-        assert os.path.isfile(path)
+        assert isinstance(paths, list) and len(paths) == 1
+        assert os.path.isfile(paths[0])
 
 
 class TestComparisonCLI:
