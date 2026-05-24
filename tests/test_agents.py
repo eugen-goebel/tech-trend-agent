@@ -134,6 +134,7 @@ class TestOrchestrator:
         orch._researcher = ResearchAgent(mock_client)
         orch._analyst = AnalysisAgent(mock_client)
 
-        report_path = orch.run("Artificial Intelligence")
-        assert report_path.endswith(".docx")
-        assert "artificial_intelligence" in report_path
+        report_paths = orch.run("Artificial Intelligence")
+        assert isinstance(report_paths, list) and len(report_paths) == 1
+        assert report_paths[0].endswith(".docx")
+        assert "artificial_intelligence" in report_paths[0]
