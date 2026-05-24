@@ -45,6 +45,12 @@ def main():
         default="claude-opus-4-6",
         help="Model to use for analysis (default: claude-opus-4-6)",
     )
+    parser.add_argument(
+        "--format",
+        choices=["docx", "pdf", "both"],
+        default="docx",
+        help="Report output format (default: docx)",
+    )
 
     args = parser.parse_args()
 
@@ -68,16 +74,17 @@ def main():
             print(f"  TECH COMPARISON REPORT — DRY RUN")
             print(f"  Technologies: {', '.join(techs)}")
             print("=" * 60)
-            report_path = orch.run_comparison_with_mock(techs, analyses)
+            report_paths = orch.run_comparison_with_mock(techs, analyses, format=args.format)
         else:
             print("=" * 60)
             print(f"  TECH TREND REPORT — DRY RUN")
             print(f"  Technology: {args.technology}")
             print("=" * 60)
-            report_path = orch.run_with_mock(args.technology, AI_MOCK)
+            report_paths = orch.run_with_mock(args.technology, AI_MOCK, format=args.format)
 
         print("\n" + "=" * 60)
-        print(f"  Report ready: {report_path}")
+        for p in report_paths:
+            print(f"  Report ready: {p}")
         print("=" * 60)
     else:
         api_key = os.environ.get("ANTHROPIC_API_KEY")
@@ -101,16 +108,17 @@ def main():
             print(f"  TECH COMPARISON REPORT")
             print(f"  Technologies: {', '.join(techs)}")
             print("=" * 60)
-            report_path = orch.run_comparison(techs)
+            report_paths = orch.run_comparison(techs, format=args.format)
         else:
             print("=" * 60)
             print(f"  TECH TREND REPORT")
             print(f"  Technology: {args.technology}")
             print("=" * 60)
-            report_path = orch.run(args.technology)
+            report_paths = orch.run(args.technology, format=args.format)
 
         print("\n" + "=" * 60)
-        print(f"  Report ready: {report_path}")
+        for p in report_paths:
+            print(f"  Report ready: {p}")
         print("=" * 60)
 
 
