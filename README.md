@@ -1,6 +1,6 @@
 # Tech Trend Report Agent
 
-An AI-powered multi-agent system that generates technology trend reports. Enter any technology — Artificial Intelligence, Blockchain, Quantum Computing — and get a professional Word document with market analysis, key players, use cases, and strategic outlook.
+An AI-powered multi-agent system that generates technology trend reports. Enter any technology (Artificial Intelligence, Blockchain, Quantum Computing) and get a professional Word document with market analysis, key players, use cases, and strategic outlook.
 
 ![CI](https://github.com/eugen-goebel/tech-trend-agent/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
@@ -14,10 +14,10 @@ An AI-powered multi-agent system that generates technology trend reports. Enter 
 
 Charts are generated from the analysis output and embedded directly into the DOCX report. Examples from the bundled `Artificial Intelligence` mock data:
 
-**Key Player Market Relevance** — horizontal bar chart ranking leading companies
+**Key Player Market Relevance**: horizontal bar chart ranking leading companies
 ![Key Players](docs/screenshots/01-key-players.png)
 
-**Use Cases by Impact Level** — distribution of identified use cases across impact tiers
+**Use Cases by Impact Level**: distribution of identified use cases across impact tiers
 ![Use Case Impact](docs/screenshots/02-use-case-impact.png)
 
 ---
@@ -85,11 +85,11 @@ python -m pytest tests/ -v
 ```
 
 The test suite covers:
-- **Model validation** — Pydantic schemas, Literal constraints, serialization
-- **Mock data integrity** — ensures dry-run data is complete and valid
-- **Report generation** — DOCX output, section presence, table structure
-- **Agent logic** — web search tool usage, pause_turn handling, structured outputs
-- **CLI integration** — argument parsing, dry-run mode, error handling
+- **Model validation**: Pydantic schemas, Literal constraints, serialization
+- **Mock data integrity**: ensures dry-run data is complete and valid
+- **Report generation**: DOCX output, section presence, table structure
+- **Agent logic**: web search tool usage, pause_turn handling, structured outputs
+- **CLI integration**: argument parsing, dry-run mode, error handling
 
 ---
 
@@ -143,21 +143,21 @@ tech-trend-agent/
 
 ## Report Sections
 
-1. **Cover Page** — Technology name, date, system branding
-2. **Executive Summary** — High-level overview
-3. **Technology Overview** — How the technology works
-4. **Maturity Assessment** — Adoption lifecycle stage
-5. **Market Landscape** — Market size, growth, regional split
-6. **Key Players** — Major companies with focus areas (table)
-7. **Use Cases** — Real-world applications with impact levels (color-coded table)
-8. **Strengths & Limitations** — Two-column comparison table
-9. **Adoption Drivers & Barriers** — Two-column comparison table
-10. **Key Trends** — Current industry developments
-11. **Future Outlook** — 3-5 year predictions
-12. **Risk Factors** — Threats and challenges
+1. **Cover Page**: Technology name, date, system branding
+2. **Executive Summary**: High-level overview
+3. **Technology Overview**: How the technology works
+4. **Maturity Assessment**: Adoption lifecycle stage
+5. **Market Landscape**: Market size, growth, regional split
+6. **Key Players**: Major companies with focus areas (table)
+7. **Use Cases**: Real-world applications with impact levels (color-coded table)
+8. **Strengths & Limitations**: Two-column comparison table
+9. **Adoption Drivers & Barriers**: Two-column comparison table
+10. **Key Trends**: Current industry developments
+11. **Future Outlook**: 3-5 year predictions
+12. **Risk Factors**: Threats and challenges
 
 ---
 
 ## License
 
-MIT License — see [LICENSE](LICENSE)
+MIT License. See [LICENSE](LICENSE)
