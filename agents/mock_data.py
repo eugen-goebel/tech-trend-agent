@@ -5,8 +5,7 @@ Provides realistic TechAnalysisResult instances so the full pipeline
 (report generation, DOCX output, styling) can be tested without an API key.
 """
 
-from .analyst import TechAnalysisResult, KeyPlayer, UseCase
-
+from .analyst import KeyPlayer, TechAnalysisResult, UseCase
 
 AI_MOCK = TechAnalysisResult(
     executive_summary=(
@@ -58,35 +57,35 @@ AI_MOCK = TechAnalysisResult(
         KeyPlayer(
             name="OpenAI",
             description="Pioneer of large language models and creator of the GPT series. "
-                        "ChatGPT reached 200 million weekly active users by early 2025.",
+            "ChatGPT reached 200 million weekly active users by early 2025.",
             focus_area="Foundation models, conversational AI, reasoning systems",
             market_position="Market leader in consumer-facing generative AI with $11B+ ARR",
         ),
         KeyPlayer(
             name="Google DeepMind",
             description="Google's unified AI research lab combining DeepMind and Google Brain. "
-                        "Develops Gemini multimodal models and AlphaFold protein prediction.",
+            "Develops Gemini multimodal models and AlphaFold protein prediction.",
             focus_area="Multimodal AI, scientific discovery, search integration",
             market_position="Strongest in AI research output and integration with Google ecosystem",
         ),
         KeyPlayer(
             name="Anthropic",
             description="AI safety-focused company building the Claude model family. Known for "
-                        "constitutional AI alignment and enterprise-grade reliability.",
+            "constitutional AI alignment and enterprise-grade reliability.",
             focus_area="Safe and steerable AI, enterprise applications, reasoning",
             market_position="Leading enterprise AI provider with focus on safety and reliability",
         ),
         KeyPlayer(
             name="Meta AI",
             description="Meta's AI division developing open-source Llama models and advancing "
-                        "multimodal AI for social platforms and AR/VR applications.",
+            "multimodal AI for social platforms and AR/VR applications.",
             focus_area="Open-source models, social AI, AR/VR integration",
             market_position="Largest open-source AI contributor driving community innovation",
         ),
         KeyPlayer(
             name="NVIDIA",
             description="Dominant supplier of AI training and inference hardware. H100 and "
-                        "B200 GPUs power the majority of global AI workloads.",
+            "B200 GPUs power the majority of global AI workloads.",
             focus_area="AI hardware (GPUs), CUDA ecosystem, AI infrastructure",
             market_position="Near-monopoly in AI training hardware with ~80% market share",
         ),
@@ -95,48 +94,48 @@ AI_MOCK = TechAnalysisResult(
         UseCase(
             title="Intelligent Code Generation",
             description="AI-powered coding assistants that write, review, debug, and refactor "
-                        "code across multiple programming languages. Reduces development time "
-                        "by 30-55% according to industry studies.",
+            "code across multiple programming languages. Reduces development time "
+            "by 30-55% according to industry studies.",
             industry="Software Development",
             impact_level="High",
         ),
         UseCase(
             title="Drug Discovery Acceleration",
             description="AI models predict molecular interactions, identify drug candidates, and "
-                        "simulate clinical trial outcomes. Reduces preclinical timelines from "
-                        "years to months with tools like AlphaFold and generative chemistry.",
+            "simulate clinical trial outcomes. Reduces preclinical timelines from "
+            "years to months with tools like AlphaFold and generative chemistry.",
             industry="Healthcare & Pharma",
             impact_level="High",
         ),
         UseCase(
             title="Autonomous Vehicle Systems",
             description="Self-driving technology combining computer vision, sensor fusion, and "
-                        "real-time decision-making. Companies like Waymo and Tesla are deploying "
-                        "commercial autonomous ride-hailing and driver-assistance systems.",
+            "real-time decision-making. Companies like Waymo and Tesla are deploying "
+            "commercial autonomous ride-hailing and driver-assistance systems.",
             industry="Automotive & Transportation",
             impact_level="High",
         ),
         UseCase(
             title="Predictive Maintenance",
             description="ML models analyze sensor data from industrial equipment to predict "
-                        "failures before they occur. Reduces unplanned downtime by 30-50% and "
-                        "maintenance costs by 25% in manufacturing and energy sectors.",
+            "failures before they occur. Reduces unplanned downtime by 30-50% and "
+            "maintenance costs by 25% in manufacturing and energy sectors.",
             industry="Manufacturing & Energy",
             impact_level="Medium",
         ),
         UseCase(
             title="Personalized Financial Advisory",
             description="AI-driven robo-advisors and fraud detection systems process millions of "
-                        "transactions in real-time. Algorithmic trading now accounts for over 60% "
-                        "of US equity market volume.",
+            "transactions in real-time. Algorithmic trading now accounts for over 60% "
+            "of US equity market volume.",
             industry="Financial Services",
             impact_level="High",
         ),
         UseCase(
             title="Content Creation & Marketing",
             description="Generative AI produces marketing copy, social media content, product "
-                        "descriptions, and visual assets at scale. Reduces content production "
-                        "costs by 40-60% while enabling hyper-personalization.",
+            "descriptions, and visual assets at scale. Reduces content production "
+            "costs by 40-60% while enabling hyper-personalization.",
             industry="Marketing & Media",
             impact_level="Medium",
         ),
@@ -248,35 +247,35 @@ BLOCKCHAIN_MOCK = TechAnalysisResult(
         KeyPlayer(
             name="Ethereum Foundation",
             description="Maintains the Ethereum protocol, the dominant smart contract platform "
-                        "with $400B+ in total value locked across DeFi protocols.",
+            "with $400B+ in total value locked across DeFi protocols.",
             focus_area="Smart contracts, DeFi infrastructure, Layer-2 ecosystem",
             market_position="Dominant platform for decentralized applications with ~60% DeFi market share",
         ),
         KeyPlayer(
             name="Hyperledger (Linux Foundation)",
             description="Open-source enterprise blockchain framework used by IBM, Walmart, and "
-                        "major supply chain consortia for permissioned networks.",
+            "major supply chain consortia for permissioned networks.",
             focus_area="Enterprise permissioned blockchains, supply chain, trade finance",
             market_position="Leading enterprise blockchain framework with 300+ member organizations",
         ),
         KeyPlayer(
             name="Chainlink Labs",
             description="Provides decentralized oracle networks connecting blockchain smart contracts "
-                        "to real-world data, APIs, and payment systems.",
+            "to real-world data, APIs, and payment systems.",
             focus_area="Oracle networks, cross-chain interoperability, data feeds",
             market_position="Dominant oracle provider securing $75B+ in DeFi value",
         ),
         KeyPlayer(
             name="Ripple Labs",
             description="Operates RippleNet for cross-border payments, partnering with 300+ financial "
-                        "institutions globally for real-time settlement.",
+            "institutions globally for real-time settlement.",
             focus_area="Cross-border payments, institutional DeFi, CBDC infrastructure",
             market_position="Leading blockchain payment network with institutional adoption focus",
         ),
         KeyPlayer(
             name="ConsenSys",
             description="Ethereum ecosystem builder behind MetaMask (30M+ users), Infura infrastructure, "
-                        "and enterprise solutions for major banks and governments.",
+            "and enterprise solutions for major banks and governments.",
             focus_area="Ethereum infrastructure, wallets, enterprise deployment tools",
             market_position="Largest Ethereum infrastructure provider with developer ecosystem dominance",
         ),
@@ -285,39 +284,39 @@ BLOCKCHAIN_MOCK = TechAnalysisResult(
         UseCase(
             title="Tokenized Real-World Assets",
             description="Converting traditional financial instruments (bonds, real estate, funds) into "
-                        "blockchain tokens for 24/7 trading, fractional ownership, and instant settlement. "
-                        "BlackRock's BUIDL fund reached $500M in tokenized assets within 6 months.",
+            "blockchain tokens for 24/7 trading, fractional ownership, and instant settlement. "
+            "BlackRock's BUIDL fund reached $500M in tokenized assets within 6 months.",
             industry="Financial Services",
             impact_level="High",
         ),
         UseCase(
             title="Supply Chain Provenance",
             description="End-to-end tracking of goods from manufacturer to consumer using immutable "
-                        "blockchain records. Walmart uses Hyperledger to trace food products from farm "
-                        "to shelf in seconds instead of days.",
+            "blockchain records. Walmart uses Hyperledger to trace food products from farm "
+            "to shelf in seconds instead of days.",
             industry="Retail & Logistics",
             impact_level="High",
         ),
         UseCase(
             title="Decentralized Identity (DID)",
             description="Self-sovereign identity systems giving individuals control over their digital "
-                        "credentials without relying on centralized providers. Used for KYC, healthcare "
-                        "records, and academic credentials across 40+ government pilot programs.",
+            "credentials without relying on centralized providers. Used for KYC, healthcare "
+            "records, and academic credentials across 40+ government pilot programs.",
             industry="Government & Identity",
             impact_level="Medium",
         ),
         UseCase(
             title="Cross-Border Payments",
             description="Near-instant international payments at a fraction of traditional correspondent "
-                        "banking costs. Stablecoins and blockchain rails reduce settlement from 3-5 days "
-                        "to under 10 seconds with fees below $0.01.",
+            "banking costs. Stablecoins and blockchain rails reduce settlement from 3-5 days "
+            "to under 10 seconds with fees below $0.01.",
             industry="Banking & Payments",
             impact_level="High",
         ),
         UseCase(
             title="Carbon Credit Marketplaces",
             description="Transparent tracking and trading of carbon credits on blockchain to prevent "
-                        "double-counting and fraud. Toucan Protocol has tokenized 20M+ tonnes of CO2 credits.",
+            "double-counting and fraud. Toucan Protocol has tokenized 20M+ tonnes of CO2 credits.",
             industry="Energy & Environment",
             impact_level="Medium",
         ),

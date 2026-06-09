@@ -11,7 +11,6 @@ from utils.chart_generator import (
     create_use_case_impact_chart,
 )
 
-
 _UNICODE_REPLACEMENTS = {
     "–": "-",
     "—": "--",
@@ -48,7 +47,6 @@ def _sanitize(text: str) -> str:
 
 
 class _TrendReportPDF(FPDF):
-
     def __init__(self, title: str):
         super().__init__()
         self._doc_title = title
@@ -63,6 +61,7 @@ class _TrendReportPDF(FPDF):
 # ---------------------------------------------------------------------------
 # Section helpers
 # ---------------------------------------------------------------------------
+
 
 def _heading(pdf: FPDF, text: str, size: int = 14):
     pdf.set_x(pdf.l_margin)
@@ -99,7 +98,9 @@ def _add_cover(pdf: FPDF, technology: str, analysis: TechAnalysisResult):
     pdf.cell(0, 8, "Technology Trend Report", new_x="LMARGIN", new_y="NEXT", align="C")
     pdf.ln(8)
     pdf.set_font("Helvetica", "I", 11)
-    pdf.cell(0, 6, _sanitize(datetime.now().strftime("%B %Y")), new_x="LMARGIN", new_y="NEXT", align="C")
+    pdf.cell(
+        0, 6, _sanitize(datetime.now().strftime("%B %Y")), new_x="LMARGIN", new_y="NEXT", align="C"
+    )
     pdf.set_text_color(0, 0, 0)
 
     pdf.ln(20)
@@ -128,7 +129,13 @@ def _add_key_players(pdf: FPDF, analysis: TechAnalysisResult, chart_path: str | 
         pdf.set_font("Helvetica", "B", 11)
         pdf.cell(0, 6, _sanitize(player.name), new_x="LMARGIN", new_y="NEXT")
         pdf.set_font("Helvetica", "I", 9)
-        pdf.cell(0, 5, _sanitize(f"{player.focus_area}  |  {player.market_position}"), new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(
+            0,
+            5,
+            _sanitize(f"{player.focus_area}  |  {player.market_position}"),
+            new_x="LMARGIN",
+            new_y="NEXT",
+        )
         _paragraph(pdf, player.description)
 
 
@@ -144,7 +151,13 @@ def _add_use_cases(pdf: FPDF, analysis: TechAnalysisResult, chart_path: str | No
         color = IMPACT_COLORS.get(uc.impact_level, (120, 120, 120))
         pdf.set_text_color(*color)
         pdf.set_font("Helvetica", "I", 9)
-        pdf.cell(0, 5, _sanitize(f"Impact: {uc.impact_level}  |  Industry: {uc.industry}"), new_x="LMARGIN", new_y="NEXT")
+        pdf.cell(
+            0,
+            5,
+            _sanitize(f"Impact: {uc.impact_level}  |  Industry: {uc.industry}"),
+            new_x="LMARGIN",
+            new_y="NEXT",
+        )
         pdf.set_text_color(0, 0, 0)
         _paragraph(pdf, uc.description)
 
@@ -176,6 +189,7 @@ def _add_strategic_outlook(pdf: FPDF, analysis: TechAnalysisResult):
 # ---------------------------------------------------------------------------
 # Public API
 # ---------------------------------------------------------------------------
+
 
 def _materialize_chart(buf, output_dir: str, name: str) -> str | None:
     """Persist a BytesIO chart to disk and return the file path."""
@@ -247,7 +261,7 @@ def generate_comparison_pdf_report(
     pdf.set_text_color(0, 0, 0)
 
     # --- Per-technology sections ---
-    for tech, analysis in zip(technologies, analyses):
+    for tech, analysis in zip(technologies, analyses, strict=False):
         pdf.add_page()
         _heading(pdf, tech, size=16)
         _heading(pdf, "Executive Summary", size=12)

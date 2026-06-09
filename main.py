@@ -15,9 +15,7 @@ from dotenv import load_dotenv
 def main():
     load_dotenv()
 
-    parser = argparse.ArgumentParser(
-        description="Generate AI-powered technology trend reports"
-    )
+    parser = argparse.ArgumentParser(description="Generate AI-powered technology trend reports")
     parser.add_argument(
         "technology",
         nargs="?",
@@ -71,13 +69,13 @@ def main():
             techs = args.compare
             analyses = [COMPARISON_MOCKS.get(t, AI_MOCK) for t in techs]
             print("=" * 60)
-            print(f"  TECH COMPARISON REPORT — DRY RUN")
+            print("  TECH COMPARISON REPORT — DRY RUN")
             print(f"  Technologies: {', '.join(techs)}")
             print("=" * 60)
             report_paths = orch.run_comparison_with_mock(techs, analyses, format=args.format)
         else:
             print("=" * 60)
-            print(f"  TECH TREND REPORT — DRY RUN")
+            print("  TECH TREND REPORT — DRY RUN")
             print(f"  Technology: {args.technology}")
             print("=" * 60)
             report_paths = orch.run_with_mock(args.technology, AI_MOCK, format=args.format)
@@ -105,13 +103,13 @@ def main():
         if args.compare:
             techs = args.compare
             print("=" * 60)
-            print(f"  TECH COMPARISON REPORT")
+            print("  TECH COMPARISON REPORT")
             print(f"  Technologies: {', '.join(techs)}")
             print("=" * 60)
             report_paths = orch.run_comparison(techs, format=args.format)
         else:
             print("=" * 60)
-            print(f"  TECH TREND REPORT")
+            print("  TECH TREND REPORT")
             print(f"  Technology: {args.technology}")
             print("=" * 60)
             report_paths = orch.run(args.technology, format=args.format)

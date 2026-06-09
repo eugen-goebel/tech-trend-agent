@@ -6,14 +6,14 @@ Manages the sequential flow: Research → Analysis → Report Generation.
 
 import anthropic
 
-from agents.researcher import ResearchAgent
 from agents.analyst import AnalysisAgent, TechAnalysisResult
-from utils.report_generator import generate_docx_report
+from agents.researcher import ResearchAgent
 from utils.comparison_report import generate_comparison_report
 from utils.pdf_report_generator import (
-    generate_pdf_report,
     generate_comparison_pdf_report,
+    generate_pdf_report,
 )
+from utils.report_generator import generate_docx_report
 
 
 def _resolve_formats(fmt: str) -> list[str]:
@@ -94,7 +94,7 @@ class TechTrendOrchestrator:
         print(f"      Research complete: {word_count:,} words collected.")
 
         # Phase 2: Analysis
-        print(f"\n[2/3] Analyzing research data — extracting structured insights ...")
+        print("\n[2/3] Analyzing research data — extracting structured insights ...")
         analysis = self._analyst.analyze(technology, research_brief)
         print(
             f"      Analysis complete: "
@@ -118,25 +118,27 @@ class TechTrendOrchestrator:
         total = len(technologies)
 
         for idx, tech in enumerate(technologies, 1):
-            print(f"\n{'='*60}")
+            print(f"\n{'=' * 60}")
             print(f"  Analyzing {idx}/{total}: {tech}")
-            print(f"{'='*60}")
+            print(f"{'=' * 60}")
 
             print(f"\n[1/2] Researching '{tech}' ...")
             research_brief = self._researcher.research(tech)
             word_count = len(research_brief.split())
             print(f"      Research complete: {word_count:,} words collected.")
 
-            print(f"\n[2/2] Analyzing research data ...")
+            print("\n[2/2] Analyzing research data ...")
             analysis = self._analyst.analyze(tech, research_brief)
-            print(f"      Analysis complete: "
-                  f"{len(analysis.key_players)} key players, "
-                  f"{len(analysis.use_cases)} use cases.")
+            print(
+                f"      Analysis complete: "
+                f"{len(analysis.key_players)} key players, "
+                f"{len(analysis.use_cases)} use cases."
+            )
             analyses.append(analysis)
 
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"  Generating comparison report ({' + '.join(f.upper() for f in formats)}) ...")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         paths = self._write_comparison_reports(technologies, analyses, formats)
         for p in paths:
@@ -165,13 +167,15 @@ class TechTrendOrchestrator:
     ) -> list[str]:
         """Run the pipeline with pre-built analysis data (for --dry-run)."""
         formats = _resolve_formats(format)
-        print(f"\n[1/3] DRY RUN — skipping web research (using mock data)")
-        print(f"[2/3] DRY RUN — skipping analysis (using mock data)")
+        print("\n[1/3] DRY RUN — skipping web research (using mock data)")
+        print("[2/3] DRY RUN — skipping analysis (using mock data)")
 
-        print(f"\n      Mock data loaded: "
-              f"{len(analysis.key_players)} key players, "
-              f"{len(analysis.use_cases)} use cases, "
-              f"{len(analysis.key_trends)} trends.")
+        print(
+            f"\n      Mock data loaded: "
+            f"{len(analysis.key_players)} key players, "
+            f"{len(analysis.use_cases)} use cases, "
+            f"{len(analysis.key_trends)} trends."
+        )
 
         print(f"\n[3/3] Generating {' + '.join(f.upper() for f in formats)} report ...")
         paths = self._write_reports(technology, analysis, formats)

@@ -2,7 +2,8 @@
 
 import pytest
 from pydantic import ValidationError
-from agents.analyst import TechAnalysisResult, KeyPlayer, UseCase
+
+from agents.analyst import KeyPlayer, TechAnalysisResult, UseCase
 
 
 class TestKeyPlayer:
@@ -23,8 +24,10 @@ class TestKeyPlayer:
 
     def test_json_roundtrip(self):
         player = KeyPlayer(
-            name="Test", description="Desc",
-            focus_area="AI", market_position="Leader",
+            name="Test",
+            description="Desc",
+            focus_area="AI",
+            market_position="Leader",
         )
         json_str = player.model_dump_json()
         restored = KeyPlayer.model_validate_json(json_str)
@@ -46,15 +49,19 @@ class TestUseCase:
     def test_invalid_impact_level(self):
         with pytest.raises(ValidationError):
             UseCase(
-                title="Test", description="Desc",
-                industry="Tech", impact_level="Extreme",
+                title="Test",
+                description="Desc",
+                industry="Tech",
+                impact_level="Extreme",
             )
 
     def test_valid_impact_levels(self):
         for level in ["High", "Medium", "Low"]:
             uc = UseCase(
-                title="T", description="D",
-                industry="I", impact_level=level,
+                title="T",
+                description="D",
+                industry="I",
+                impact_level=level,
             )
             assert uc.impact_level == level
 
@@ -69,12 +76,8 @@ class TestTechAnalysisResult:
             technology_overview="Overview.",
             maturity_assessment="Mature.",
             market_landscape="Growing.",
-            key_players=[
-                KeyPlayer(name="X", description="D", focus_area="F", market_position="P")
-            ],
-            use_cases=[
-                UseCase(title="T", description="D", industry="I", impact_level="High")
-            ],
+            key_players=[KeyPlayer(name="X", description="D", focus_area="F", market_position="P")],
+            use_cases=[UseCase(title="T", description="D", industry="I", impact_level="High")],
             strengths=["Strong"],
             limitations=["Limited"],
             adoption_drivers=["Cost"],
