@@ -2,12 +2,12 @@
 
 from io import BytesIO
 
-from agents.analyst import TechAnalysisResult, KeyPlayer, UseCase
+from agents.analyst import KeyPlayer, TechAnalysisResult, UseCase
 from agents.mock_data import AI_MOCK
 from utils.chart_generator import (
+    _estimate_market_relevance,
     create_key_players_chart,
     create_use_case_impact_chart,
-    _estimate_market_relevance,
 )
 
 
@@ -18,13 +18,35 @@ def _minimal_analysis():
         maturity_assessment="Mature.",
         market_landscape="Growing.",
         key_players=[
-            KeyPlayer(name="Acme", description="A company", focus_area="AI", market_position="Market leader"),
-            KeyPlayer(name="Beta", description="Another", focus_area="ML", market_position="Emerging player"),
+            KeyPlayer(
+                name="Acme",
+                description="A company",
+                focus_area="AI",
+                market_position="Market leader",
+            ),
+            KeyPlayer(
+                name="Beta",
+                description="Another",
+                focus_area="ML",
+                market_position="Emerging player",
+            ),
         ],
         use_cases=[
-            UseCase(title="Automation", description="Automate tasks", industry="Tech", impact_level="High"),
-            UseCase(title="Analytics", description="Analyze data", industry="Finance", impact_level="Medium"),
-            UseCase(title="Support", description="Chat support", industry="Retail", impact_level="Low"),
+            UseCase(
+                title="Automation",
+                description="Automate tasks",
+                industry="Tech",
+                impact_level="High",
+            ),
+            UseCase(
+                title="Analytics",
+                description="Analyze data",
+                industry="Finance",
+                impact_level="Medium",
+            ),
+            UseCase(
+                title="Support", description="Chat support", industry="Retail", impact_level="Low"
+            ),
         ],
         strengths=["Fast"],
         limitations=["Expensive"],
@@ -37,7 +59,6 @@ def _minimal_analysis():
 
 
 class TestKeyPlayersChart:
-
     def test_returns_bytesio(self):
         buf = create_key_players_chart(_minimal_analysis())
         assert isinstance(buf, BytesIO)
@@ -59,7 +80,6 @@ class TestKeyPlayersChart:
 
 
 class TestUseCaseImpactChart:
-
     def test_returns_bytesio(self):
         buf = create_use_case_impact_chart(_minimal_analysis())
         assert isinstance(buf, BytesIO)
@@ -76,7 +96,6 @@ class TestUseCaseImpactChart:
 
 
 class TestMarketRelevanceScoring:
-
     def test_market_leader_scores_5(self):
         assert _estimate_market_relevance("Global market leader") == 5
 

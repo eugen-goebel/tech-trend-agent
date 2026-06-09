@@ -1,10 +1,11 @@
 """Tests for DOCX report generation."""
 
 import os
+
 from docx import Document
 
+from agents.analyst import KeyPlayer, TechAnalysisResult, UseCase
 from agents.mock_data import AI_MOCK
-from agents.analyst import TechAnalysisResult, KeyPlayer, UseCase
 from utils.report_generator import generate_docx_report
 
 
@@ -89,12 +90,8 @@ class TestReportWithMinimalData:
             technology_overview="Overview.",
             maturity_assessment="Early.",
             market_landscape="Small.",
-            key_players=[
-                KeyPlayer(name="X", description="D", focus_area="F", market_position="P")
-            ],
-            use_cases=[
-                UseCase(title="T", description="D", industry="I", impact_level="Low")
-            ],
+            key_players=[KeyPlayer(name="X", description="D", focus_area="F", market_position="P")],
+            use_cases=[UseCase(title="T", description="D", industry="I", impact_level="Low")],
             strengths=["S"],
             limitations=["L"],
             adoption_drivers=["D"],

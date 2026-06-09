@@ -1,10 +1,11 @@
 """Tests for agent classes (using mocked API client)."""
 
 from unittest.mock import MagicMock
-from agents.researcher import ResearchAgent
+
 from agents.analyst import AnalysisAgent, TechAnalysisResult
-from agents.orchestrator import TechTrendOrchestrator
 from agents.mock_data import AI_MOCK
+from agents.orchestrator import TechTrendOrchestrator
+from agents.researcher import ResearchAgent
 
 
 class TestResearchAgent:

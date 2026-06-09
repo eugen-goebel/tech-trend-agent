@@ -5,18 +5,19 @@ Uses structured outputs (Pydantic) and adaptive thinking to produce
 a comprehensive TechAnalysisResult from unstructured research text.
 """
 
-from pydantic import BaseModel
-import anthropic
-
 from typing import Literal
 
+import anthropic
+from pydantic import BaseModel
 
 # ---------------------------------------------------------------------------
 # Pydantic models
 # ---------------------------------------------------------------------------
 
+
 class KeyPlayer(BaseModel):
     """A significant company or organization in the technology space."""
+
     name: str
     description: str
     focus_area: str
@@ -25,6 +26,7 @@ class KeyPlayer(BaseModel):
 
 class UseCase(BaseModel):
     """A real-world application of the technology."""
+
     title: str
     description: str
     industry: str
@@ -33,6 +35,7 @@ class UseCase(BaseModel):
 
 class TechAnalysisResult(BaseModel):
     """Complete structured analysis of a technology trend."""
+
     executive_summary: str
     technology_overview: str
     maturity_assessment: str
@@ -51,6 +54,7 @@ class TechAnalysisResult(BaseModel):
 # ---------------------------------------------------------------------------
 # Agent
 # ---------------------------------------------------------------------------
+
 
 class AnalysisAgent:
     """

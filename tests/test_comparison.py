@@ -3,11 +3,11 @@
 import os
 import subprocess
 import sys
-
-import pytest
 from unittest.mock import MagicMock, patch
 
-from agents.analyst import TechAnalysisResult, KeyPlayer, UseCase
+import pytest
+
+from agents.analyst import KeyPlayer, TechAnalysisResult, UseCase
 from agents.mock_data import AI_MOCK, BLOCKCHAIN_MOCK, COMPARISON_MOCKS
 from utils.comparison_report import generate_comparison_report
 
@@ -21,12 +21,12 @@ def minimal_analysis():
         maturity_assessment="Maturity text.",
         market_landscape="Market text.",
         key_players=[
-            KeyPlayer(name="Company A", description="Desc",
-                      focus_area="Focus", market_position="Leading"),
+            KeyPlayer(
+                name="Company A", description="Desc", focus_area="Focus", market_position="Leading"
+            ),
         ],
         use_cases=[
-            UseCase(title="Use 1", description="Desc",
-                    industry="Tech", impact_level="High"),
+            UseCase(title="Use 1", description="Desc", industry="Tech", impact_level="High"),
         ],
         strengths=["Strength 1"],
         limitations=["Limitation 1"],
@@ -141,10 +141,18 @@ class TestOrchestratorComparison:
 class TestComparisonCLI:
     def test_dry_run_compare(self, tmp_path):
         result = subprocess.run(
-            [sys.executable, "main.py", "--dry-run",
-             "--compare", "Artificial Intelligence", "Blockchain",
-             "--output", str(tmp_path)],
-            capture_output=True, text=True,
+            [
+                sys.executable,
+                "main.py",
+                "--dry-run",
+                "--compare",
+                "Artificial Intelligence",
+                "Blockchain",
+                "--output",
+                str(tmp_path),
+            ],
+            capture_output=True,
+            text=True,
             cwd=os.path.dirname(os.path.dirname(__file__)),
         )
         assert result.returncode == 0
@@ -154,7 +162,8 @@ class TestComparisonCLI:
     def test_compare_needs_two_techs(self):
         result = subprocess.run(
             [sys.executable, "main.py", "--dry-run", "--compare", "OnlyOne"],
-            capture_output=True, text=True,
+            capture_output=True,
+            text=True,
             cwd=os.path.dirname(os.path.dirname(__file__)),
         )
         assert result.returncode != 0

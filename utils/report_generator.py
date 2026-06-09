@@ -7,36 +7,37 @@ formatted Word document with cover page, key player table, use case matrix, etc.
 
 import os
 from datetime import datetime
+
 from docx import Document
-from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt, RGBColor
 
 from agents.analyst import TechAnalysisResult
 from utils.chart_generator import create_key_players_chart, create_use_case_impact_chart
 
-
 # ---------------------------------------------------------------------------
 # Color palette (tech green theme)
 # ---------------------------------------------------------------------------
-COLOR_DARK_GREEN   = RGBColor(0x1A, 0x6C, 0x3C)   # #1A6C3C — headers
-COLOR_MED_GREEN    = RGBColor(0x2E, 0xB4, 0x6D)   # #2EB46D — accents
-COLOR_LIGHT_BG     = RGBColor(0xF0, 0xFF, 0xF5)   # #F0FFF5 — table backgrounds
-COLOR_STRENGTH_GRN = RGBColor(0x1D, 0x7A, 0x4A)   # strengths
-COLOR_LIMIT_RED    = RGBColor(0x9B, 0x1C, 0x1C)   # limitations
-COLOR_DRIVER_TEAL  = RGBColor(0x0D, 0x66, 0x6B)   # adoption drivers
-COLOR_BARRIER_AMB  = RGBColor(0x92, 0x60, 0x0D)   # adoption barriers
-COLOR_WHITE        = RGBColor(0xFF, 0xFF, 0xFF)
-COLOR_LIGHT_GRAY   = RGBColor(0xF7, 0xF8, 0xFA)
-COLOR_IMPACT_HIGH  = "C62828"
-COLOR_IMPACT_MED   = "E65100"
-COLOR_IMPACT_LOW   = "2E7D32"
+COLOR_DARK_GREEN = RGBColor(0x1A, 0x6C, 0x3C)  # #1A6C3C — headers
+COLOR_MED_GREEN = RGBColor(0x2E, 0xB4, 0x6D)  # #2EB46D — accents
+COLOR_LIGHT_BG = RGBColor(0xF0, 0xFF, 0xF5)  # #F0FFF5 — table backgrounds
+COLOR_STRENGTH_GRN = RGBColor(0x1D, 0x7A, 0x4A)  # strengths
+COLOR_LIMIT_RED = RGBColor(0x9B, 0x1C, 0x1C)  # limitations
+COLOR_DRIVER_TEAL = RGBColor(0x0D, 0x66, 0x6B)  # adoption drivers
+COLOR_BARRIER_AMB = RGBColor(0x92, 0x60, 0x0D)  # adoption barriers
+COLOR_WHITE = RGBColor(0xFF, 0xFF, 0xFF)
+COLOR_LIGHT_GRAY = RGBColor(0xF7, 0xF8, 0xFA)
+COLOR_IMPACT_HIGH = "C62828"
+COLOR_IMPACT_MED = "E65100"
+COLOR_IMPACT_LOW = "2E7D32"
 
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _set_cell_background(cell, hex_color: str):
     """Set a table cell's background color via XML."""
@@ -94,6 +95,7 @@ def _add_horizontal_rule(doc: Document):
 # Section builders
 # ---------------------------------------------------------------------------
 
+
 def _build_cover_page(doc: Document, technology: str):
     """Create a styled cover page."""
     doc.add_paragraph()
@@ -136,9 +138,17 @@ def _build_cover_page(doc: Document, technology: str):
     doc.add_page_break()
 
 
-def _build_two_column_table(doc: Document, left_label, left_items, left_color,
-                            right_label, right_items, right_color,
-                            left_bg, right_bg):
+def _build_two_column_table(
+    doc: Document,
+    left_label,
+    left_items,
+    left_color,
+    right_label,
+    right_items,
+    right_color,
+    left_bg,
+    right_bg,
+):
     """Build a two-column comparison table (strengths/limitations, drivers/barriers)."""
     table = doc.add_table(rows=2, cols=2)
     table.style = "Table Grid"
@@ -262,6 +272,7 @@ def _build_use_case_table(doc: Document, use_cases):
 # Main entry point
 # ---------------------------------------------------------------------------
 
+
 def generate_docx_report(
     technology: str,
     analysis: TechAnalysisResult,
@@ -343,9 +354,14 @@ def generate_docx_report(
     _add_horizontal_rule(doc)
     _build_two_column_table(
         doc,
-        "STRENGTHS", analysis.strengths, "1D7A4A",
-        "LIMITATIONS", analysis.limitations, "9B1C1C",
-        "F0FFF4", "FFF5F5",
+        "STRENGTHS",
+        analysis.strengths,
+        "1D7A4A",
+        "LIMITATIONS",
+        analysis.limitations,
+        "9B1C1C",
+        "F0FFF4",
+        "FFF5F5",
     )
     doc.add_paragraph()
 
@@ -354,9 +370,14 @@ def generate_docx_report(
     _add_horizontal_rule(doc)
     _build_two_column_table(
         doc,
-        "DRIVERS", analysis.adoption_drivers, "0D666B",
-        "BARRIERS", analysis.adoption_barriers, "92600D",
-        "F0FFFF", "FFFBF0",
+        "DRIVERS",
+        analysis.adoption_drivers,
+        "0D666B",
+        "BARRIERS",
+        analysis.adoption_barriers,
+        "92600D",
+        "F0FFFF",
+        "FFFBF0",
     )
     doc.add_paragraph()
 

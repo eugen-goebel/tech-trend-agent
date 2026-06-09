@@ -1,8 +1,8 @@
 """Tests for CLI argument parsing."""
 
+import os
 import subprocess
 import sys
-import os
 
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -34,7 +34,14 @@ class TestCLIDryRun:
 
     def test_dry_run_with_custom_technology(self, tmp_path):
         result = subprocess.run(
-            [sys.executable, "main.py", "Quantum Computing", "--dry-run", "--output", str(tmp_path)],
+            [
+                sys.executable,
+                "main.py",
+                "Quantum Computing",
+                "--dry-run",
+                "--output",
+                str(tmp_path),
+            ],
             cwd=PROJECT_DIR,
             capture_output=True,
             text=True,
