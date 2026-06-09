@@ -7,14 +7,14 @@ with comparison tables, strength/limitation matrices, and a combined outlook.
 
 import os
 from datetime import datetime
+
 from docx import Document
-from docx.shared import Inches, Pt, RGBColor
 from docx.enum.text import WD_ALIGN_PARAGRAPH
-from docx.oxml.ns import qn
 from docx.oxml import OxmlElement
+from docx.oxml.ns import qn
+from docx.shared import Inches, Pt, RGBColor
 
 from agents.analyst import TechAnalysisResult
-
 
 # ---------------------------------------------------------------------------
 # Color palette
@@ -99,8 +99,9 @@ def _build_cover(doc: Document, technologies: list[str]):
     doc.add_page_break()
 
 
-def _build_comparison_table(doc: Document, technologies: list[str],
-                            analyses: list[TechAnalysisResult], field: str):
+def _build_comparison_table(
+    doc: Document, technologies: list[str], analyses: list[TechAnalysisResult], field: str
+):
     """Build a side-by-side comparison table for a text field."""
     cols = len(technologies)
     table = doc.add_table(rows=2, cols=cols)
@@ -134,8 +135,9 @@ def _build_comparison_table(doc: Document, technologies: list[str],
     doc.add_paragraph()
 
 
-def _build_list_comparison(doc: Document, technologies: list[str],
-                           analyses: list[TechAnalysisResult], field: str):
+def _build_list_comparison(
+    doc: Document, technologies: list[str], analyses: list[TechAnalysisResult], field: str
+):
     """Build a side-by-side comparison of list fields."""
     cols = len(technologies)
     table = doc.add_table(rows=2, cols=cols)
@@ -171,12 +173,13 @@ def _build_list_comparison(doc: Document, technologies: list[str],
     doc.add_paragraph()
 
 
-def _build_key_player_comparison(doc: Document, technologies: list[str],
-                                 analyses: list[TechAnalysisResult]):
+def _build_key_player_comparison(
+    doc: Document, technologies: list[str], analyses: list[TechAnalysisResult]
+):
     """Summary table of top players per technology."""
     headers = ["Technology", "Player", "Focus Area", "Market Position"]
     rows_data = []
-    for tech, analysis in zip(technologies, analyses):
+    for tech, analysis in zip(technologies, analyses, strict=False):
         for player in analysis.key_players[:3]:
             rows_data.append((tech, player.name, player.focus_area, player.market_position))
 

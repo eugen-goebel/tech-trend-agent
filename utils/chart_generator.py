@@ -8,12 +8,12 @@ into DOCX documents via python-docx.
 from io import BytesIO
 
 import matplotlib
+
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import matplotlib.ticker as ticker
 
 from agents.analyst import TechAnalysisResult
-
 
 # ---------------------------------------------------------------------------
 # Color palette (matches report theme)
@@ -24,9 +24,18 @@ CHART_BG = "#FAFFFE"
 CHART_TEXT = "#2D3748"
 
 MARKET_POSITION_SCORES = {
-    "market leader": 5, "dominant": 5, "leading": 4, "leader": 4,
-    "strongest": 4, "strong": 3, "major": 3, "largest": 4,
-    "near-monopoly": 5, "growing": 2, "emerging": 1, "niche": 1,
+    "market leader": 5,
+    "dominant": 5,
+    "leading": 4,
+    "leader": 4,
+    "strongest": 4,
+    "strong": 3,
+    "major": 3,
+    "largest": 4,
+    "near-monopoly": 5,
+    "growing": 2,
+    "emerging": 1,
+    "niche": 1,
 }
 
 
@@ -62,17 +71,28 @@ def create_key_players_chart(analysis: TechAnalysisResult) -> BytesIO:
     ax.set_xlim(0, 5.5)
     ax.xaxis.set_major_locator(ticker.MaxNLocator(integer=True))
     ax.set_xlabel("Market Relevance (1-5)", fontsize=9, color=CHART_TEXT)
-    ax.set_title("Key Player Market Relevance", fontsize=11, fontweight="bold",
-                 color=CHART_DARK_GREEN, pad=10)
+    ax.set_title(
+        "Key Player Market Relevance",
+        fontsize=11,
+        fontweight="bold",
+        color=CHART_DARK_GREEN,
+        pad=10,
+    )
 
     ax.tick_params(axis="both", labelsize=8.5, colors=CHART_TEXT)
     ax.invert_yaxis()
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
-    for bar, score in zip(bars, scores):
-        ax.text(bar.get_width() + 0.1, bar.get_y() + bar.get_height() / 2,
-                str(score), va="center", fontsize=8.5, color=CHART_TEXT)
+    for bar, score in zip(bars, scores, strict=False):
+        ax.text(
+            bar.get_width() + 0.1,
+            bar.get_y() + bar.get_height() / 2,
+            str(score),
+            va="center",
+            fontsize=8.5,
+            color=CHART_TEXT,
+        )
 
     fig.tight_layout()
     return _fig_to_buffer(fig)
@@ -105,17 +125,25 @@ def create_use_case_impact_chart(analysis: TechAnalysisResult) -> BytesIO:
 
     ax.yaxis.set_major_locator(ticker.MaxNLocator(integer=True))
     ax.set_ylabel("Number of Use Cases", fontsize=9, color=CHART_TEXT)
-    ax.set_title("Use Cases by Impact Level", fontsize=11, fontweight="bold",
-                 color=CHART_DARK_GREEN, pad=10)
+    ax.set_title(
+        "Use Cases by Impact Level", fontsize=11, fontweight="bold", color=CHART_DARK_GREEN, pad=10
+    )
 
     ax.tick_params(axis="both", labelsize=9, colors=CHART_TEXT)
     ax.spines["top"].set_visible(False)
     ax.spines["right"].set_visible(False)
 
-    for bar, count in zip(bars, counts):
+    for bar, count in zip(bars, counts, strict=False):
         if count > 0:
-            ax.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.1,
-                    str(count), ha="center", fontsize=9, fontweight="bold", color=CHART_TEXT)
+            ax.text(
+                bar.get_x() + bar.get_width() / 2,
+                bar.get_height() + 0.1,
+                str(count),
+                ha="center",
+                fontsize=9,
+                fontweight="bold",
+                color=CHART_TEXT,
+            )
 
     fig.tight_layout()
     return _fig_to_buffer(fig)

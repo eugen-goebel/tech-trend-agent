@@ -1,7 +1,7 @@
 """Tests for mock data integrity — ensures dry-run mode works correctly."""
 
+from agents.analyst import KeyPlayer, TechAnalysisResult, UseCase
 from agents.mock_data import AI_MOCK
-from agents.analyst import TechAnalysisResult, KeyPlayer, UseCase
 
 
 class TestMockDataIntegrity:
