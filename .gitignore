@@ -12,3 +12,8 @@ venv/
 dist/
 build/
 output/*.docx
+
+# Coverage
+.coverage
+coverage.xml
+htmlcov/
