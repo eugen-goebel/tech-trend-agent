@@ -1,3 +1,24 @@
+[project]
+name = "tech-trend-agent"
+version = "1.1.0"
+description = "Multi-agent system that generates comprehensive technology trend reports"
+requires-python = ">=3.10"
+dependencies = [
+    "anthropic>=0.49.0",
+    "matplotlib>=3.10.9",
+    "python-docx>=1.2.0",
+    "fpdf2>=2.7.0",
+    "python-dotenv>=1.2.2",
+    "pydantic>=2.13.4",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=9.0.3",
+    "pytest-cov>=5",
+    "ruff>=0.15",
+]
+
 [tool.ruff]
 line-length = 100
 target-version = "py310"

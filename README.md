@@ -60,17 +60,17 @@ CLI Input ("Quantum Computing")
 git clone https://github.com/eugen-goebel/tech-trend-agent.git
 cd tech-trend-agent
 
-# 2. Install dependencies
-pip install -r requirements.txt
+# 2. Install dependencies (https://docs.astral.sh/uv/)
+uv sync
 
 # 3a. Test without an API key (uses sample AI data)
-python main.py --dry-run
+uv run main.py --dry-run
 
 # 3b. Full run with Anthropic API key
 echo "ANTHROPIC_API_KEY=sk-ant-..." > .env
-python main.py "Quantum Computing"
-python main.py "Blockchain"
-python main.py "Edge Computing"
+uv run main.py "Quantum Computing"
+uv run main.py "Blockchain"
+uv run main.py "Edge Computing"
 ```
 
 The report is saved to `./output/tech_trend_<technology>_<date>.docx`.
@@ -95,7 +95,7 @@ The test suite covers:
 
 ## Example Output
 
-Running `python main.py "Artificial Intelligence"` produces a ~10-page Word document:
+Running `uv run main.py "Artificial Intelligence"` produces a ~10-page Word document:
 
 <p align="center">
   <img src="assets/report_preview.png" alt="Example report for Artificial Intelligence" width="600">
