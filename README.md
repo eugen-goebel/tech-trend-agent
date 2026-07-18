@@ -80,7 +80,7 @@ The report is saved to `./output/tech_trend_<technology>_<date>.docx`.
 ## Testing
 
 ```bash
-# Run the full test suite (52 tests, no API key needed)
+# Run the full test suite (92 tests, no API key needed)
 python -m pytest tests/ -v
 ```
 
@@ -136,7 +136,7 @@ tech-trend-agent/
 | Structured Outputs | Pydantic v2 + `messages.parse()` |
 | Server-side Search | `web_search_20260209` tool |
 | Report Generation | python-docx |
-| Testing | pytest (52 tests) |
+| Testing | pytest (92 tests) |
 | Thinking Mode | Adaptive thinking |
 
 ---
