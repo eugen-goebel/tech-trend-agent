@@ -4,7 +4,6 @@ An AI-powered multi-agent system that generates technology trend reports. Enter 
 
 ![CI](https://github.com/eugen-goebel/tech-trend-agent/actions/workflows/tests.yml/badge.svg)
 ![Python](https://img.shields.io/badge/Python-3.10+-blue)
-![Tests](https://img.shields.io/badge/Tests-52_passed-brightgreen)
 ![Anthropic SDK](https://img.shields.io/badge/Anthropic_SDK-0.49+-cc785c)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
