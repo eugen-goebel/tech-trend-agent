@@ -2,7 +2,7 @@
 name = "tech-trend-agent"
 version = "1.1.0"
 description = "Multi-agent system that generates comprehensive technology trend reports"
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
     "anthropic>=0.121.0",
     "matplotlib>=3.10.9",
