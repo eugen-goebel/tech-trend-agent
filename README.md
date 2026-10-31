@@ -3,7 +3,7 @@
 An AI-powered multi-agent system that generates technology trend reports. Enter any technology (Artificial Intelligence, Blockchain, Quantum Computing) and get a professional Word document with market analysis, key players, use cases, and strategic outlook.
 
 ![CI](https://github.com/eugen-goebel/tech-trend-agent/actions/workflows/tests.yml/badge.svg)
-![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Python](https://img.shields.io/badge/Python-3.11+-blue)
 ![Anthropic SDK](https://img.shields.io/badge/Anthropic_SDK-0.49+-cc785c)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
